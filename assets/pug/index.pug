@@ -1,0 +1,95 @@
+extends templates/_layout
+
+block vars
+	- array = {body_class: '', layout_mod: '', page_title: 'Test'}
+
+block content_block
+	form.form(action='#', method='POST')
+		.form-col
+			+input({
+				label: 'Required field',
+				class: formsFields.fields,
+				attrs: {
+					id: 'input_1',
+					type: 'text',
+					name: 'text_field_1',
+					placeholder: 'Field placeholder',
+					required: true
+				}
+			})
+
+			+input({
+				label: 'Disabled field',
+				class: formsFields.fields,
+				attrs: {
+					id: 'input_2',
+					type: 'text',
+					name: 'text_field_2',
+					placeholder: 'Enter something...',
+					disabled: true
+				}
+			})
+
+			+select({
+				label: 'Select field',
+				class: formsFields.fields,
+				options: ['option 1', 'option 2', 'option 3'],
+				attrs: {
+					id: 'select_1',
+					name: 'select_field_1'
+				}
+			})
+
+		.form-col
+			+textarea({
+				label: 'Yor message',
+				class: formsFields.fields,
+				attrs: {
+					id: 'textarea_2',
+					name: 'textarea_1',
+					cols: 60,
+					rows: 5,
+					placeholder: 'Enter your message'
+				}
+			})
+
+			+file({
+				label: 'Choose a file...',
+				class: formsFields.fields,
+				attrs: {
+					id: 'file_1',
+					type: 'file',
+					name: 'file_field_1'
+				}
+			})
+
+		.form-col
+			+checkbox({
+				label: 'Checkbox label',
+				class: formsFields.checkbox,
+				attrs: {
+					id: 'check_1',
+					type: 'checkbox',
+					name: 'check_1',
+					checked: true
+				}
+			})
+
+			+radiobutton({
+				label: 'Yes',
+				class: formsFields.checkbox,
+				attrs: {
+					id: 'radio_yes',
+					type: 'radio',
+					name: 'answer'
+				}
+			})
+			+radiobutton({
+				label: 'No',
+				class: formsFields.checkbox,
+				attrs: {
+					id: 'radio_no',
+					type: 'radio',
+					name: 'answer'
+				}
+			})

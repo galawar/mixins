@@ -1,0 +1,44 @@
+mixin head(array)
+	meta(charset='UTF-8')
+	title!=array.page_title
+	meta(name="viewport", content="width=device-width")
+	meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+	meta(name="apple-mobile-web-app-capable", content="yes")
+	meta(name="format-detection", content="telephone=no")
+	link(rel="stylesheet" media="all" href="styles/styles.css")
+
+//----------------------------------------
+mixin input(config)
+	.form-field
+		label(class= config.class.label for= config.attrs.id)= config.label
+		input(class= config.class.input)&attributes(config.attrs)
+
+mixin textarea(config)
+	.form-field
+		label(class= config.class.label for= config.attrs.id)= config.label
+		textarea(class= config.class.textarea)&attributes(config.attrs)
+
+mixin checkbox(config)
+	.form-field
+		label(class= config.class.label for= config.attrs.id)
+			input(class= config.class.input)&attributes(config.attrs)
+			span.form-field__text.form-field__text_check= config.label
+
+mixin radiobutton(config)
+	.form-field
+		label(class= config.class.label for= config.attrs.id)
+			input(class= config.class.input)&attributes(config.attrs)
+			span.form-field__text.form-field__text_radio= config.label
+
+mixin file(config)
+	.form-field
+		label(class= config.class.label for= config.attrs.id)
+			input(class= config.class.file)&attributes(config.attrs)
+			span(class= `${config.class.file}_cta`)= config.label
+
+mixin select(config)
+	.form-field
+		label(class= config.class.label for= config.attrs.id)= config.label
+		select(class= config.class.select)&attributes(config.attrs)
+			each option in config.options
+				option(value= option)= option
