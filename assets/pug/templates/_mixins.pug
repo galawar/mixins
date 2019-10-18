@@ -8,37 +8,63 @@ mixin head(array)
 	link(rel="stylesheet" media="all" href="styles/styles.css")
 
 //----------------------------------------
+mixin default_input(config)
+	-classes = config.class || ''
+	case config.attrs.type
+		when 'checkbox'
+			input(class= `${fields.types.checkbox} ${classes}`)&attributes(config.attrs)
+			span.form-field__text.form-field__text_check= config.label
+		when 'radio'
+			input(class= `${fields.types.radio} ${classes}`)&attributes(config.attrs)
+			span.form-field__text.form-field__text_radio= config.label
+		when 'file'
+			input(class= `${fields.types.file} ${classes}`)&attributes(config.attrs)
+			span(class= `${fields.types.file}_cta`)= config.label
+		default
+			input(class= `${fields.types.default} ${classes}`)&attributes(config.attrs)
+
+mixin default_label(config, showLabelText)
+	-mods = config.mods || ''
+	case showLabelText
+		when false
+			label(class= `${fields.label} ${mods}` for= config.attrs.id)
+				block
+		default
+			label(class= `${fields.label} ${mods}` for= config.attrs.id)= config.label
+				block
+
+mixin default_textarea(config)
+	textarea(class= `${fields.types.textarea} ${classes}`)&attributes(config.attrs)
+
 mixin input(config)
 	.form-field
-		label(class= config.class.label for= config.attrs.id)= config.label
-		input(class= config.class.input)&attributes(config.attrs)
+		+default_label(config)
+		+default_input(config)
 
 mixin textarea(config)
 	.form-field
-		label(class= config.class.label for= config.attrs.id)= config.label
-		textarea(class= config.class.textarea)&attributes(config.attrs)
+		+default_label(config)
+		+default_textarea(config)
 
 mixin checkbox(config)
 	.form-field
-		label(class= config.class.label for= config.attrs.id)
-			input(class= config.class.input)&attributes(config.attrs)
-			span.form-field__text.form-field__text_check= config.label
+		+default_label(config, false)
+			+default_input(config)
 
 mixin radiobutton(config)
 	.form-field
-		label(class= config.class.label for= config.attrs.id)
-			input(class= config.class.input)&attributes(config.attrs)
-			span.form-field__text.form-field__text_radio= config.label
+		+default_label(config, false)
+			+default_input(config)
 
 mixin file(config)
 	.form-field
-		label(class= config.class.label for= config.attrs.id)
-			input(class= config.class.file)&attributes(config.attrs)
-			span(class= `${config.class.file}_cta`)= config.label
+		+default_label(config, false)
+			+default_input(config)
 
 mixin select(config)
+	-classes = config.class || ''
 	.form-field
-		label(class= config.class.label for= config.attrs.id)= config.label
-		select(class= config.class.select)&attributes(config.attrs)
+		+default_label(config)
+		select(class= `${fields.types.select} ${classes}`)&attributes(config.attrs)
 			each option in config.options
 				option(value= option)= option

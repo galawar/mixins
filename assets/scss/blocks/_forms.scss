@@ -4,8 +4,9 @@
 	min-width: $input_width;
 	height: $input_height;
 	color: $input_text_color;
-	border-radius: $input_radius;
+	//border-radius: $input_radius;
 	border: 1px solid $input_border;
+	//-webkit-appearance: none;
 
 	&::placeholder {
 		color: $input_placeholder_color;
@@ -17,133 +18,133 @@
 	display: flex;
 	margin: 1rem;
 	border: 2px dashed #ff5d15;
-	//background-color: rgba(255, 59, 0, 0.15);
 
+	// grid
 	&-col {
 		flex: 1 1 50%;
 	}
-}
 
-//---------------------------------------------form-field
-.form-field {
-	margin: 1rem;
-	padding: 1rem;
-	border: 1px dotted #1579fe;
+	// fields
+	&-field {
+		margin: 1rem;
+		padding: 1rem;
+		border: 1px dotted #1579fe;
 
-	// labels
-	&__label {
-		display: block;
-		margin-bottom: .5rem;
-		width: 100%;
-		cursor: pointer;
+		// labels
+		&__label {
+			display: block;
+			margin-bottom: .5rem;
+			width: 100%;
+			cursor: pointer;
 
-		&:last-child {
-			margin-bottom: 0;
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&_hidden {
+				display: none;
+			}
+
+			&_radiocheck {
+
+			}
 		}
 
-		&_hidden {
+		// input
+		&__input {
+			@extend %default_field !optional;
+
+			&[disabled] {
+				background-color: #d6d6d6;
+			}
+		}
+
+		// file
+		&__file {
+			display: none;
+
+			&_cta {
+				display: inline-block;
+				padding: .5rem 1rem;
+				cursor: pointer;
+				//border-radius: .5rem;
+				border: 1px solid $color_2;
+				background-color: $color_1;
+				transition: all .2s ease;
+
+				&:hover {
+					background-color: darken($color_1, 10%);
+				}
+			}
+		}
+
+		// textarea
+		&__textarea {
+			@extend %default_field !optional;
+
+			padding: $input_paddings;
+			height: auto;
+		}
+
+		// select
+		&__select {
+			@extend %default_field !optional;
+		}
+
+		// radiobuttons and checkboxes
+		&__radiocheck {
 			display: none;
 		}
 
-		&_radiocheck {
+		&__text {
+			position: relative;
+			padding-left: 2.6rem;
 
-		}
-	}
-
-	// input
-	&__input {
-		@extend %default_field;
-
-		&[disabled] {
-			background-color: #c0c0c0;
-		}
-	}
-
-	// file
-	&__file {
-		display: none;
-
-		&_cta {
-			display: inline-block;
-			padding: .5rem 1rem;
-			cursor: pointer;
-			border-radius: .5rem;
-			border: 1px solid $color_2;
-			background-color: $color_1;
-			transition: all .2s ease;
-
-			&:hover {
-				background-color: darken($color_1, 10%);
+			&:before, &:after {
+				position: absolute;
+				display: block;
+				content: '';
+				transition: opacity .2s ease;
 			}
-		}
-	}
 
-	// textarea
-	&__textarea {
-		@extend %default_field;
-
-		padding: $input_paddings;
-		height: auto;
-	}
-
-	// select
-	&__select {
-		@extend %default_field;
-	}
-
-	// radiobuttons and checkboxes
-	&__radiocheck {
-		display: none;
-	}
-
-	&__text {
-		position: relative;
-		padding-left: 2.6rem;
-
-		&:before, &:after {
-			position: absolute;
-			display: block;
-			content: '';
-			transition: opacity .2s ease;
-		}
-
-		&:before {
-			top: 0;
-			left: 0;
-			width: 1.6rem;
-			height: 1.6rem;
-			border: 1px solid $input_text_color;
-		}
-
-		&:after {
-			top: .4rem;
-			left: .4rem;
-			width: .8rem;
-			height: .8rem;
-			border-radius: .2rem;
-			background-color: $input_text_color;
-			opacity: 0;
-		}
-
-		&_check {
 			&:before {
-				border-radius: .1rem;
-			}
-		}
-
-		&_radio {
-			&:before {
-				border-radius: 50%;
+				top: 0;
+				left: 0;
+				width: 1.6rem;
+				height: 1.6rem;
+				border: 1px solid $input_text_color;
 			}
 
 			&:after {
-				border-radius: 50%;
+				top: .4rem;
+				left: .4rem;
+				width: .8rem;
+				height: .8rem;
+				border-radius: .2rem;
+				background-color: $input_text_color;
+				opacity: 0;
 			}
-		}
 
-		.form-field__radiocheck:checked + & {
-			&:after {
-				opacity: 1;
+			&_check {
+				&:before {
+					border-radius: .1rem;
+				}
+			}
+
+			&_radio {
+				&:before {
+					border-radius: 50%;
+				}
+
+				&:after {
+					border-radius: 50%;
+				}
+			}
+
+			.form-field__radiocheck:checked + & {
+				&:after {
+					opacity: 1;
+				}
 			}
 		}
 	}
