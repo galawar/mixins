@@ -16,12 +16,13 @@
 //---------------------------------------------form
 .form {
 	display: flex;
+	flex-flow: row wrap;
 	margin: 1rem;
 	border: 2px dashed #ff5d15;
 
 	// grid
 	&-col {
-		flex: 1 1 50%;
+		flex: 1 1 33.33%;
 	}
 
 	// fields

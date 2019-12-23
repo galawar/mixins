@@ -4,12 +4,10 @@ block vars
 	- array = {body_class: '', layout_mod: '', page_title: 'Test'}
 
 block content_block
-	input(required=true)
-
 	form.form(action='#', method='POST')
 		.form-col
 			+input({
-				mods: `${fields.mods.hiddenLabel} ratata_mod`,
+				mods: `${fields.mods.hiddenLabel}`,
 				label: 'Required field',
 				class: 'test_mod',
 				attrs: {
@@ -98,5 +96,38 @@ block content_block
 					id: 'radio_no',
 					type: 'radio',
 					name: 'answer'
+				}
+			})
+		
+		.form-col
+			+input({
+				label: 'Color field',
+				class: '',
+				attrs: {
+					id: 'color_1',
+					type: 'color',
+					name: 'color_field_1',
+				}
+			})
+
+		.form-col
+			+input({
+				label: 'Date field',
+				class: '',
+				attrs: {
+					id: 'date_1',
+					type: 'date',
+					name: 'date_field_1',
+				}
+			})
+
+		.form-col
+			+input({
+				label: 'Time field',
+				class: '',
+				attrs: {
+					id: 'time_1',
+					type: 'time',
+					name: 'time_field_1',
 				}
 			})
