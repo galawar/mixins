@@ -7,9 +7,12 @@ block content_block
 	form.form(action='#', method='POST')
 		.form-col
 			+input({
-				mods: `${fields.mods.hiddenLabel}`,
+				mods: mtdFields.mods.hiddenLabel,
+				class: [
+					`${mtdFields.types.default} input_test_class`,
+					`${mtdFields.label} label_test_class`
+				],
 				label: 'Required field',
-				class: 'test_mod',
 				attrs: {
 					id: 'input_1',
 					type: 'text',
@@ -21,6 +24,10 @@ block content_block
 			})
 
 			+input({
+				class: [
+					mtdFields.types.default,
+					mtdFields.label
+				],
 				label: 'Disabled field',
 				attrs: {
 					id: 'input_2',
@@ -32,6 +39,10 @@ block content_block
 			})
 
 			+input({
+				class: [
+					mtdFields.types.default,
+					mtdFields.label
+				],
 				label: 'Password field',
 				attrs: {
 					id: 'input_3',
@@ -42,6 +53,10 @@ block content_block
 			})
 
 			+select({
+				class: [
+					mtdFields.types.select,
+					mtdFields.label
+				],
 				label: 'Select field',
 				options: ['option 1', 'option 2', 'option 3'],
 				attrs: {
@@ -52,6 +67,10 @@ block content_block
 
 		.form-col
 			+textarea({
+				class: [
+					mtdFields.types.textarea,
+					mtdFields.label
+				],
 				label: 'Yor message',
 				attrs: {
 					id: 'textarea_2',
@@ -63,6 +82,10 @@ block content_block
 			})
 
 			+file({
+				class: [
+					mtdFields.types.file,
+					mtdFields.label
+				],
 				label: 'Choose a file...',
 				attrs: {
 					id: 'file_1',
@@ -73,6 +96,10 @@ block content_block
 
 		.form-col
 			+checkbox({
+				class: [
+					mtdFields.types.checkbox,
+					mtdFields.label
+				],
 				label: 'Checkbox label',
 				attrs: {
 					id: 'check_1',
@@ -83,6 +110,10 @@ block content_block
 			})
 
 			+radiobutton({
+				class: [
+					mtdFields.types.radio,
+					mtdFields.label
+				],
 				label: 'Yes',
 				attrs: {
 					id: 'radio_yes',
@@ -91,6 +122,10 @@ block content_block
 				}
 			})
 			+radiobutton({
+				class: [
+					mtdFields.types.radio,
+					mtdFields.label
+				],
 				label: 'No',
 				attrs: {
 					id: 'radio_no',
@@ -101,8 +136,11 @@ block content_block
 		
 		.form-col
 			+input({
+				class: [
+					mtdFields.types.default,
+					mtdFields.label
+				],
 				label: 'Color field',
-				class: '',
 				attrs: {
 					id: 'color_1',
 					type: 'color',
@@ -112,8 +150,11 @@ block content_block
 
 		.form-col
 			+input({
+				class: [
+					mtdFields.types.default,
+					mtdFields.label
+				],
 				label: 'Date field',
-				class: '',
 				attrs: {
 					id: 'date_1',
 					type: 'date',
@@ -123,8 +164,11 @@ block content_block
 
 		.form-col
 			+input({
+				class: [
+					mtdFields.types.default,
+					mtdFields.label
+				],
 				label: 'Time field',
-				class: '',
 				attrs: {
 					id: 'time_1',
 					type: 'time',

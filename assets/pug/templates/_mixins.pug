@@ -8,63 +8,67 @@ mixin head(array)
 	link(rel="stylesheet" media="all" href="styles/styles.css")
 
 //----------------------------------------
-mixin default_input(config)
-	-classes = config.class || ''
+mixin mtdInputWrapper(config)
+	- wrapperClass = config.wrapper || mtdFieldsWrapper.default
+	- inputClass = config.class || mtdFields.types.default
+	div(class= `${wrapperClass}`)
+		block
+
+mixin mtdInput(config)
 	case config.attrs.type
 		when 'checkbox'
-			input(class= `${fields.types.checkbox} ${classes}`)&attributes(config.attrs)
-			span.form-field__text.form-field__text_check= config.label
+			input(class= `${inputClass[0]}`)&attributes(config.attrs)
+			span(class= `${wrapperClass}__text ${wrapperClass}__text_check`)= config.label
 		when 'radio'
-			input(class= `${fields.types.radio} ${classes}`)&attributes(config.attrs)
-			span.form-field__text.form-field__text_radio= config.label
+			input(class= `${inputClass[0]}`)&attributes(config.attrs)
+			span(class= `${wrapperClass}__text ${wrapperClass}__text_radio`)= config.label
 		when 'file'
-			input(class= `${fields.types.file} ${classes}`)&attributes(config.attrs)
-			span(class= `${fields.types.file}_cta`)= config.label
+			input(class= `${inputClass[0]}`)&attributes(config.attrs)
+			span(class= `${inputClass[0]}_cta`)= config.label
 		default
-			input(class= `${fields.types.default} ${classes}`)&attributes(config.attrs)
+			input(class= `${inputClass[0]}`)&attributes(config.attrs)
 
-mixin default_label(config, showLabelText)
-	-mods = config.mods || ''
+mixin mtdLabel(config, showLabelText)
+	- mods = config.mods || ''
 	case showLabelText
 		when false
-			label(class= `${fields.label} ${mods}` for= config.attrs.id)
+			label(class= `${inputClass[1]} ${mods}` for= config.attrs.id)
 				block
 		default
-			label(class= `${fields.label} ${mods}` for= config.attrs.id)= config.label
+			label(class= `${inputClass[1]} ${mods}` for= config.attrs.id)= config.label
 				block
 
-mixin default_textarea(config)
-	textarea(class= `${fields.types.textarea} ${classes}`)&attributes(config.attrs)
-
-mixin input(config)
-	.form-field
-		+default_label(config)
-		+default_input(config)
-
-mixin textarea(config)
-	.form-field
-		+default_label(config)
-		+default_textarea(config)
-
-mixin checkbox(config)
-	.form-field
-		+default_label(config, false)
-			+default_input(config)
-
-mixin radiobutton(config)
-	.form-field
-		+default_label(config, false)
-			+default_input(config)
-
-mixin file(config)
-	.form-field
-		+default_label(config, false)
-			+default_input(config)
+mixin mtdTextarea(config)
+	textarea(class= `${inputClass[0]}`)&attributes(config.attrs)
 
 mixin select(config)
-	-classes = config.class || ''
-	.form-field
-		+default_label(config)
-		select(class= `${fields.types.select} ${classes}`)&attributes(config.attrs)
+	+mtdInputWrapper(config)
+		+mtdLabel(config)
+		select(class= `${inputClass[0]}`)&attributes(config.attrs)
 			each option in config.options
 				option(value= option)= option
+
+mixin input(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config)
+		+mtdInput(config)
+
+mixin textarea(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config)
+		+mtdTextarea(config)
+
+mixin checkbox(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config, false)
+			+mtdInput(config)
+
+mixin radiobutton(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config, false)
+			+mtdInput(config)
+
+mixin file(config)
+	+mtdInputWrapper(config)
+		+mtdLabel(config, false)
+			+mtdInput(config)

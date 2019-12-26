@@ -1,17 +1,23 @@
 -
-	fields = {
-		label: 'form-field__label',
+	mtdFieldsWrapper = {
+		default: 'form-field',
+		another: 'mtd-field'
+	}
+
+-
+	mtdFields = {
+		label: mtdFieldsWrapper.default + '__label',
 		types: {
-			default: 'form-field__input',
-			file: 'form-field__file',
-			radio: 'form-field__radiocheck',
-			checkbox: 'form-field__radiocheck',
-			select: 'form-field__select',
-			textarea: 'form-field__textarea'
+			default: mtdFieldsWrapper.default + '__input',
+			file: mtdFieldsWrapper.default + '__file',
+			radio: mtdFieldsWrapper.default + '__radiocheck',
+			checkbox: mtdFieldsWrapper.default + '__radiocheck',
+			select: mtdFieldsWrapper.default + '__select',
+			textarea: mtdFieldsWrapper.default + '__textarea'
 		},
 		mods: {
-			hiddenLabel: 'form-field__label_hidden',
-			checkboxTextSpan: 'form-field__text_check',
-			radioTextSpan: 'form-field__text_radio'
+			hiddenLabel: mtdFieldsWrapper.default + '__label_hidden',
+			checkboxTextSpan: mtdFieldsWrapper.default + '__text_check',
+			radioTextSpan: mtdFieldsWrapper.default + '__text_radio'
 		}
 	}
