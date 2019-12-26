@@ -29,25 +29,6 @@
 
 		gulp cssLint
 
-## How to work with js
-
-Create all your main scripts in `/assets/js`. Create all your additional scripts (jquery,plugins, и т.д) in `/assets/js/all`. Gulp will concat all your additional scripts into `all.js`
-
-## How to make iconfont
-
-1. Install packages
-
-		npm install gulp-iconfont@4.0.0 gulp-iconfont-css -D
-
-2. Put your icons to `/assets/i/icons` folder
-3. Change variable 'fontName' in gulpfile.js  ('iconfont' by default).
-4. Uncomment iconfont task and run
-
-		gulp iconfont
-
-5. Pic your font in `/assets/fonts/icons` and font extends(%placeholders) in `/assets/sass/_icons.scss`
-6. Edit your font on [iconmoon](https://icomoon.io)
-
 ## How to make svg-sprite
 1. Install packages
 
