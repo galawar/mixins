@@ -17,18 +17,6 @@
 
 		gulp
 
-4. Edit files in assets folder, see result in dist folder. If you want to build optimized version of project run :
-
-		gulp build
-
-5. Command for html validation
-
-		gulp validation
-
-6. Lint your styles
-
-		gulp cssLint
-
 ## How to make svg-sprite
 1. Install packages
 
