@@ -1,9 +1,17 @@
 //---------------------------------------------variables
+:root {
+	--unit: 1rem;
+}
+
+.st_mod {
+	--unit: 16px;
+}
+
 $color_1: #c0c0c0;
 $color_2: #9d9d9d;
 
 $input_width: 28rem;
-$input_paddings: 1.4rem;
+$input_paddings: calc(var(--unit) * 1.4);
 $input_height: 4rem;
 $input_radius: .4rem;
 $input_border: $color_2;

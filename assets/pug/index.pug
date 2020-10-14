@@ -7,10 +7,10 @@ block content_block
 	form.form(action='#', method='POST')
 		.form-col
 			+input({
-				mods: mtdFields.mods.hiddenLabel,
+				mods: 'add_any_mods',
 				class: [
-					`${mtdFields.types.default} input_test_class`,
-					`${mtdFields.label} label_test_class`
+					`${mtdFields.label} ${mtdFields.mods.hiddenLabel}`,
+					`${mtdFields.types.default} input_test_class`
 				],
 				label: 'Required field',
 				attrs: {
@@ -25,8 +25,8 @@ block content_block
 
 			+input({
 				class: [
-					mtdFields.types.default,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.default
 				],
 				label: 'Disabled field',
 				attrs: {
@@ -40,8 +40,8 @@ block content_block
 
 			+input({
 				class: [
-					mtdFields.types.default,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.default
 				],
 				label: 'Password field',
 				attrs: {
@@ -54,8 +54,8 @@ block content_block
 
 			+select({
 				class: [
-					mtdFields.types.select,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.select
 				],
 				label: 'Select field',
 				options: ['option 1', 'option 2', 'option 3'],
@@ -68,8 +68,8 @@ block content_block
 		.form-col
 			+textarea({
 				class: [
-					mtdFields.types.textarea,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.textarea
 				],
 				label: 'Yor message',
 				attrs: {
@@ -83,8 +83,8 @@ block content_block
 
 			+file({
 				class: [
-					mtdFields.types.file,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.file
 				],
 				label: 'Choose a file...',
 				attrs: {
@@ -97,8 +97,8 @@ block content_block
 		.form-col
 			+checkbox({
 				class: [
-					mtdFields.types.checkbox,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.checkbox
 				],
 				label: 'Checkbox label',
 				attrs: {
@@ -111,8 +111,8 @@ block content_block
 
 			+radiobutton({
 				class: [
-					mtdFields.types.radio,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.radio
 				],
 				label: 'Yes',
 				attrs: {
@@ -123,8 +123,8 @@ block content_block
 			})
 			+radiobutton({
 				class: [
-					mtdFields.types.radio,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.radio
 				],
 				label: 'No',
 				attrs: {
@@ -137,8 +137,8 @@ block content_block
 		.form-col
 			+input({
 				class: [
-					mtdFields.types.default,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.default
 				],
 				label: 'Color field',
 				attrs: {
@@ -151,8 +151,8 @@ block content_block
 		.form-col
 			+input({
 				class: [
-					mtdFields.types.default,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.default
 				],
 				label: 'Date field',
 				attrs: {
@@ -165,8 +165,8 @@ block content_block
 		.form-col
 			+input({
 				class: [
-					mtdFields.types.default,
-					mtdFields.label
+					mtdFields.label,
+					mtdFields.types.default
 				],
 				label: 'Time field',
 				attrs: {

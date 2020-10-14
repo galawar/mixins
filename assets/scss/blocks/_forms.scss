@@ -17,7 +17,7 @@
 .form {
 	display: flex;
 	flex-flow: row wrap;
-	margin: 1rem;
+	margin: var(--unit);
 	border: 2px dashed #ff5d15;
 
 	// grid
@@ -27,14 +27,14 @@
 
 	// fields
 	&-field {
-		margin: 1rem;
-		padding: 1rem;
+		margin: var(--unit);
+		padding: var(--unit);
 		border: 1px dotted #1579fe;
 
 		// labels
 		&__label {
 			display: block;
-			margin-bottom: .5rem;
+			margin-bottom: calc(var(--unit) / 2);
 			width: 100%;
 			cursor: pointer;
 
@@ -66,7 +66,7 @@
 
 			&_cta {
 				display: inline-block;
-				padding: .5rem 1rem;
+				padding: calc(var(--unit) / 2) var(--unit);
 				cursor: pointer;
 				//border-radius: .5rem;
 				border: 1px solid $color_2;
